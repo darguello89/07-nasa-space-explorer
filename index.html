@@ -39,6 +39,11 @@
       </form>
     </section>
 
+    <section class="fact-banner" aria-live="polite">
+      <p class="fact-label">Did You Know?</p>
+      <p id="space-fact" class="fact-text"></p>
+    </section>
+
     <section id="gallery" class="gallery" aria-live="polite">
       <div class="placeholder" id="gallery-placeholder">
         <div class="placeholder-icon" aria-hidden="true">*</div>
@@ -51,7 +56,7 @@
   <div id="apod-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-content">
       <button id="modal-close" class="modal-close" aria-label="Close image modal">&times;</button>
-      <img id="modal-image" src="" alt="Expanded APOD" />
+      <div id="modal-media" class="modal-media" aria-live="polite"></div>
       <div class="modal-meta">
         <h2 id="modal-title"></h2>
         <p id="modal-date" class="modal-date"></p>

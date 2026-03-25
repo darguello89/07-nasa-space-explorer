@@ -95,6 +95,28 @@ h1 {
   padding: 1.5rem;
 }
 
+.fact-banner {
+  margin: 1rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(120deg, rgba(11, 61, 145, 0.55), rgba(5, 15, 44, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-soft);
+}
+
+.fact-label {
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--nasa-red);
+  font-size: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.fact-text {
+  font-size: 1rem;
+  color: rgba(244, 247, 255, 0.95);
+}
+
 .field {
   display: flex;
   flex-direction: column;
@@ -161,10 +183,57 @@ h1 {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-.gallery-item img {
+.media-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gallery-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.08);
+}
+
+.media-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--nasa-red);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.play-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.no-preview {
+  display: grid;
+  place-items: center;
+  height: 200px;
+  color: rgba(244, 247, 255, 0.7);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(244, 247, 255, 0.25);
   border-radius: 12px;
 }
 
@@ -227,6 +296,19 @@ h1 {
   position: sticky;
   top: 0.5rem;
   float: right;
+}
+
+.modal-media {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-media iframe,
+.modal-media img,
+.modal-media video {
+  width: 100%;
+  border-radius: 16px;
+  min-height: 320px;
 }
 
 .modal-meta {
