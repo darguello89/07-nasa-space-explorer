@@ -1,144 +1,268 @@
-/* Global reset & box sizing */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Space+Grotesk:wght@400;500&display=swap');
+
+:root {
+  --nasa-blue: #0b3d91;
+  --nasa-red: #fc3d21;
+  --midnight: #050f2c;
+  --starfield: #0e1a3b;
+  --lunar-white: #f4f7ff;
+  --nebula: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(12, 22, 53, 0.85);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 15px 40px rgba(5, 10, 30, 0.45);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Base page styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
-  padding: 20px;
+  min-height: 100vh;
+  font-family: 'Space Grotesk', 'Barlow', sans-serif;
+  background: radial-gradient(circle at top, #1a2c62, var(--midnight));
+  color: var(--lunar-white);
+  padding: 2rem;
 }
 
-/* Centered container */
-.container {
+.cosmic-gradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(40% 50% at 20% 20%, rgba(252, 61, 33, 0.25), transparent),
+    radial-gradient(40% 55% at 80% 10%, rgba(11, 61, 145, 0.35), transparent);
+  z-index: -1;
+}
+
+.page-shell {
   max-width: 1200px;
   margin: 0 auto;
+  background: rgba(5, 10, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
 }
 
-/* Header */
-.site-header {
+.site-hero {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.brand-lockup {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  gap: 1.25rem;
+}
+
+.logo {
+  width: 150px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
+}
+
+.eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--nasa-red);
 }
 
 h1 {
-  font-family: Verdana, sans-serif;
-  font-weight: bold;
-  color: #212121;
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: 0.02em;
 }
 
-/* Logo */
-.logo {
-  width: 140px;
-  margin-right: 15px;
+.hero-copy {
+  max-width: 780px;
+  font-size: 1.05rem;
+  color: rgba(244, 247, 255, 0.85);
 }
 
-/* Date‐picker & button row */
-.filters {
+.controls {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.date-form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  background: rgba(11, 61, 145, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+.field {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: rgba(244, 247, 255, 0.9);
 }
 
-/* Inputs and buttons */
-input[type="date"],
-button {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 1.4;
-  width: 100%;
+.field input {
+  background: rgba(5, 10, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  color: var(--lunar-white);
+  font-size: 1rem;
 }
 
-/* Button specific */
-button {
-  background-color: #d3d3d3;
-  color: black;
+.field input:focus {
+  outline: 2px solid var(--nasa-red);
+}
+
+.cta-button {
+  align-self: flex-end;
+  background: linear-gradient(120deg, var(--nasa-red), #ff6d3a);
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
   cursor: pointer;
-}
-button:hover {
-  background-color: #bfbfbf;
-}
-
-/* Stack horizontally on wider screens */
-@media (min-width: 600px) {
-  .filters {
-    flex-direction: row;
-    padding: 0;
-  }
-  
-  input[type="date"],
-  button {
-    width: auto;
-  }
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-/* Gallery flex container */
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(252, 61, 33, 0.35);
+}
+
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-/* Gallery items */
 .gallery-item {
-  flex: 1 1 100%;  /* full width by default */
-  min-width: 280px;
-  max-width: 500px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
+.gallery-item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .gallery-item img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 12px;
+}
+
+.gallery-item h3 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2rem;
 }
 
 .gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
+  color: rgba(244, 247, 255, 0.85);
+  font-size: 0.95rem;
 }
 
-/* Placeholder content */
 .placeholder {
-  flex: 1 1 100%;
+  grid-column: 1 / -1;
   text-align: center;
-  padding: 40px;
-  color: #666;
+  padding: 3rem 1rem;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
 }
 
 .placeholder-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 30, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #04091e;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 95vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--lunar-white);
+  font-size: 2rem;
+  cursor: pointer;
+  position: sticky;
+  top: 0.5rem;
+  float: right;
+}
+
+.modal-meta {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-date {
+  color: var(--nasa-blue);
+  font-weight: 600;
+}
+
+.modal-explanation {
+  color: rgba(244, 247, 255, 0.9);
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 1rem;
+  }
+
+  .page-shell {
+    padding: 1.5rem;
+  }
+
+  .brand-lockup {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .modal {
+    padding: 1rem;
+  }
 }
