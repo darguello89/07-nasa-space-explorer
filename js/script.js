@@ -106,8 +106,14 @@ async function handleFormSubmit(event) {
   const startDate = startInput.value;
   const endDate = endInput.value;
 
+  if (!startDate || !endDate) {
+    renderStatusMessage('Please choose both a start date and an end date.');
+    return;
+  }
+
   if (startDate > endDate) {
-    alert('Start date should be before the end date.');
+    renderStatusMessage('Start date must be on or before the end date.');
+    endInput.focus();
     return;
   }
 
